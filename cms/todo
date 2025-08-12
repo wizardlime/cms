@@ -1,0 +1,29 @@
+auto update room status while new reservation
+
+<!-- <div class="container-sm">
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Reservation Lastname</th>
+                <th>Reservation Check-in Date</th>
+                <th>Reservation Check-out Date</th>
+                <th>Reservation Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($reservations as $reservation) : ?>
+                <tr>
+                    <td><?php echo $reservation->reservation_lastname ?></td>
+                    <td><?php echo $reservation->reservation_date_from ?></td>
+                    <td><?php echo $reservation->reservation_date_to ?></td>
+                    <td><?php echo $reservation->reservation_status ?></td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+    <a href="./reservations/reservations_overview.php">See all reservations</a>
+</div> -->
+
+<!-- <?php 
+    print_r("There are currently " . $countReservations . " new reservations.");
+    ?> -->
