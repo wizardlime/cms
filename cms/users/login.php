@@ -1,22 +1,34 @@
 <?php 
 
     include __DIR__ . '/../header.php';
+    include __DIR__ . '/../includes/messages.php';
+
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $username = $_POST['user_name'];
-        $password = $_POST['user_password'];
 
-        $statement = $pdo->prepare("SELECT * FROM users WHERE user_name = :user_name");
+      $username = trim($_POST['user_name'] ?? '');
+      $password = $_POST['user_password'];
+
+      if(empty($username) || empty($password)) {
+          $_SESSION['error'] = "Invalid username and/or password.";
+          header('Location: login.php');
+          exit();
+
+      } else {
+        $statement = $pdo->prepare("SELECT * FROM users WHERE user_name = :user_name LIMIT 1");
         $statement->execute(['user_name' => $username]);
-        $user = $statement->fetch();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if($username && password_verify($password, $user['user_password'])) {
-            $_SESSION['user'] = $user['user_name'];
-            header('Location: ../dashboard.php');
-            exit();
+        if($user && password_verify($password, $user['user_password'])) {
+          $_SESSION['user'] = $user['user_name'];
+          $_SESSION['user_id'] = $user['user_id'];
+          header('Location: ../dashboard.php');
+          exit(); 
         } else {
-            echo "Username and/or email are incorrect.";
+          echo "<div class='alert alert-danger'>Invalid username and/or password.</div>";
         }
+
+      }
 
 
     }

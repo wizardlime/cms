@@ -9,25 +9,40 @@
 
 ?>
 
-<body class="container">
-<div class="card text-center w-full">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="../dashboard.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reservations_overview.php">Reservations</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./rooms/rooms_overview.php">Rooms</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./users/users_overview.php">Users</a>
-      </li>
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="dashboard.php">Hotel CMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../dashboard.php">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../reservations/reservations_overview.php">Reservations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../rooms/rooms_overview.php">Rooms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="users/users_overview.php">Users</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-warning fw-semibold" href="../users/logout.php">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+</nav>
+
+
 <div class="add_link"><a href='./users/register.php'>Create new user</a></div>
   <?php if(!empty($message)): ?>
   <?php echo $message; ?>
