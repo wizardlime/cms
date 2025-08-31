@@ -27,28 +27,3 @@ auto update room status while new reservation
 <!-- <?php 
     print_r("There are currently " . $countReservations . " new reservations.");
     ?> -->
-
-
-<body class='container'>
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="dashboard.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./reservations/reservations_overview.php">Reservations</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./rooms/rooms_overview.php">Rooms</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./users/users_overview.php">Users</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="./users/logout.php">Logout</a>
-      </li>
-    </ul>
-  </div>
-</div>
-</body>

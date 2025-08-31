@@ -1,6 +1,8 @@
 <?php 
 
 include __DIR__ . '/../header.php'; 
+include __DIR__ . '/../includes/auth.php'; 
+
 
 
 
@@ -40,22 +42,58 @@ include __DIR__ . '/../header.php';
 ?>
 
 
-<h2>New Reservation</h2>
-<form action="" method="post">
-    <input type="text" name="reservation_name" placehodler="First Name">
-    <input type="text" name="reservation_lastname" placehodler="Last Name">
-    <input type="date" name="reservation_date_from" placehodler="Check-in Date">
-    <input type="date" name="reservation_date_to" placehodler="Check-out Date">
-    <input type="email" name="reservation_email" placehodler="Email address">
+<div class="container my-5 d-flex justify-content-center">
+  <div class="card shadow-lg w-100" style="max-width: 500px; background-color: #001d3d; color: white;">
+    <div class="card-body p-4">
+      <h2 class="mb-4 text-center">New Reservation</h2>
+      <form action="" method="post" class="d-flex flex-column gap-3">
 
-    <select name="room_id" id="">
-        <?php foreach ($rooms as $room): ?>
-            <option value="<?=$room['room_id']?> ">
-                <?= htmlspecialchars($room['room_name']) ?>
+        <input type="text" name="reservation_name" placeholder="First Name" required class="form-control">
+        <input type="text" name="reservation_lastname" placeholder="Last Name" required class="form-control">
+        <input type="date" name="reservation_date_from" placeholder="Check-in Date" required class="form-control">
+        <input type="date" name="reservation_date_to" placeholder="Check-out Date" required class="form-control">
+        <input type="email" name="reservation_email" placeholder="Email Address" required class="form-control">
+
+        <select name="room_id" required class="form-select">
+          <option value="" disabled selected>Select Room</option>
+          <?php foreach ($rooms as $room): ?>
+            <option value="<?= $room['room_id'] ?>">
+              <?= htmlspecialchars($room['room_name']) ?>
             </option>
-        <?php endforeach ?> 
-    </select>
+          <?php endforeach ?> 
+        </select>
 
-    <input type="submit" value="submit" name="submit">
+        <input type="submit" value="Submit" name="submit" class="btn btn-primary mt-2">
+      </form>
+    </div>
+  </div>
+</div>
 
-</form>
+<style>
+.card {
+  border-radius: 0.75rem;
+}
+
+.form-control, .form-select {
+  /* background-color: #002244; */
+  color: white;
+  border: 1px solid #003366;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #002244;
+  color: white;
+  border-color: #00bfa6;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: #00bfa6;
+  border-color: #00bfa6;
+}
+
+.btn-primary:hover {
+  background-color: #00a28f;
+  border-color: #00a28f;
+}
+</style>

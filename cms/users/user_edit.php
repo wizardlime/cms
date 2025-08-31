@@ -2,6 +2,8 @@
 
     
 include __DIR__ . '/../header.php'; 
+include __DIR__ . '/../includes/auth.php'; 
+
 
 $user_id = $_POST['user_id'] ?? $_GET['user_id'] ?? null;
 
@@ -45,37 +47,68 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 }
 
 ?>
-<body class="container">
-<div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="nav-link" href="../dashboard.php">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="reservations_overview.php">Reservations</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="../rooms/rooms_overview.php">Rooms</a>
-      </li>
-    </ul>
+
+<div class="container my-5 d-flex justify-content-center">
+  <div class="card shadow-lg w-100" style="max-width: 500px; background-color: #001d3d; color: white;">
+    <div class="card-body">
+      <h2 class="mb-4 text-center">Edit User #<?= $user->user_id ?></h2>
+
+      <form method="post" class="d-flex flex-column gap-3">
+        <div class="mb-3">
+          <label for="user_email" class="form-label">Email address:</label>
+          <input type="email" class="form-control" name="user_email" value="<?= htmlspecialchars($user->user_email) ?>" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="user_name" class="form-label">Username:</label>
+          <input type="text" class="form-control" name="user_name" value="<?= htmlspecialchars($user->user_name) ?>" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="user_password" class="form-label">Password:</label>
+          <input type="password" class="form-control" name="user_password" value="<?= htmlspecialchars($user->user_password) ?>" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary w-100" name="submit" value="Submit">
+      </form>
+    </div>
   </div>
 </div>
-<form method="post">
-  <div class="mb-3">
-    <label for="user_email" class="form-label">Email address:</label>
-    <input type="email" class="form-control" name="user_email" value="<?= $user->user_email?>">
-  </div>
-  <div class="mb-3">
-    <label for="user_name" class="form-label">Username:</label>
-    <input type="text" class="form-control" name="user_name" value="<?= $user->user_name?>">
-  </div>
-  <div class="mb-3">
-    <label for="user_password" class="form-label">Password:</label>
-    <input type="password" class="form-control" name="user_password" value="<?= $user-> user_password?>">
-  </div>
 
-  <input type="submit" class="btn btn-primary" name="submit">Submit</input>
-</form>
+<style>
+.card {
+  border-radius: 0.75rem;
+}
 
-</body>
+.form-control {
+  background-color: #002244;
+  color: white;
+  border: 1px solid #003366;
+}
+
+.form-control:focus {
+  border-color: #00bfa6;
+  box-shadow: none;
+  background-color: #002244;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #00bfa6;
+  border-color: #00bfa6;
+}
+
+.btn-primary:hover {
+  background-color: #00a28f;
+  border-color: #00a28f;
+}
+
+@media (max-width: 576px) {
+  .card-body {
+    padding: 1.5rem 1rem;
+  }
+}
+</style>
+
+
+

@@ -1,7 +1,8 @@
 <?php 
-    session_start();
 
-    include __DIR__ . '/../header.php'; 
+    include __DIR__ . '/../header.php';
+    include __DIR__ . '/../includes/auth.php'; 
+ 
 
     $reservation_id = $_POST['reservation_id'] ?? $_GET['reservation_id'] ?? null;
 

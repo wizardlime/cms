@@ -1,7 +1,8 @@
 <?php 
-    session_start();
 
-    include __DIR__ . '/../header.php'; 
+    include __DIR__ . '/../header.php';
+    include __DIR__ . '/../includes/auth.php'; 
+ 
 
     $user_id = $_POST['user_id'] ?? $_GET['user_id'] ?? null;
 
